@@ -1,0 +1,351 @@
+@import "vars"
+@import "fonts"
+@import "font-custom"
+@import "libs"
+@import "_mixins/transition"
+
+::placeholder
+	color: #666
+
+::selection
+	background-color: $accent
+	color: #fff
+*
+	box-sizing: border-box
+
+body
+	font-size: 12px
+	min-width: 320px
+	position: relative
+	line-height: 1.4
+	font-family: $font-default
+	overflow-x: hidden
+	color: $text
+	background-color: $base-gray
+	input, textarea
+		border: #666 1px solid
+		outline: none
+		&:focus:required:invalid
+			border-color: $color-highlighting
+		&:required:valid
+			border-color: $accent
+p
+	line-height: 16px
+a
+	color: inherit
+	text-decoration: none
+
+button
+	padding: 0
+	border: none
+	outline: none
+	background-color: transparent
+img
+	max-width: 100%
+ul
+	list-style-type: none
+	margin: 0
+	padding: 0
+main
+	padding-top: 50px
+
+.text-center
+	text-align: center
+
+b, strong
+	font-weight: bold
+.container
+	width: 835px
+	margin: auto
+
+.product
+	&__content
+		display: flex
+		justify-content: space-between
+		align-items: start
+		margin-bottom: 60px
+
+	&__img
+		width: 400px
+		height: 400px
+		position: relative
+		top: 5px
+
+	&__info
+		width: 380px
+
+	&__title
+		margin-top: 0
+		margin-bottom: 10px
+		font-family: $header-font
+		color: $titles
+		font-size: 24px
+		line-height: 30px / 24px * 100%
+		font-weight: bold
+		text-transform: uppercase
+		line-height: 1.25
+		letter-spacing: 0.025em
+
+	&__code
+		margin-bottom: 16px
+		font-size: 10px
+		color: rgba(44, 48, 61, 0.702)
+		letter-spacing: 0.08em
+
+	&__share
+		position: relative
+		&-item
+			display: inline-block
+
+		&-opener
+			font-size: 18px
+			font-weight: 700
+			letter-spacing: 0.05em
+			color: $color-social
+			cursor: pointer
+			+transition()
+			&:hover
+				color: $color-highlighting
+
+		&-button
+			display: inline-block
+			width: 41px
+			height: 41px
+			margin-right: 10px
+			border: 2px solid $color-social
+			border-radius: 50%
+			color: $color-social
+			transition: all 400ms
+			text-align: center
+			line-height: 37px
+			font-size: 22px
+			+transition()
+
+			&:hover
+				border: 2px solid $titles
+				color: $titles
+
+		&-closure
+			font-size: 27px
+			background-color: transparent
+			color: $color-social
+			cursor: pointer
+			+transition()
+
+			&:hover
+				color: $titles
+
+	&__btn
+		min-width: 214px
+		height: 44px
+		color: $titles
+		font-size: 14px
+		font-weight: 700
+		text-transform: uppercase
+		letter-spacing: 0.025em
+		text-align: center
+		background-color: $accent
+		border-radius: 50px
+		cursor: pointer
+		+transition()
+		&:hover
+			box-shadow: inset 0 0 50px 25px  darken($accent, 15)
+	&__description
+		margin-bottom: 16px
+		&-title
+			font-size: 14px
+			line-height: 16px
+			color: $text
+			font-weight: bold
+			margin-bottom: 10px
+			text-transform: uppercase
+	&-mods
+		display: flex
+		align-items: center
+		margin-bottom: 12px
+		&__title
+			width: 60px
+			margin: 0 10px 0 0
+			font-size: 14px
+			letter-spacing: 0.8px
+			color: $titles
+			text-transform: uppercase
+			font-weight: 700
+
+		&__buttons-wrap
+			input
+				display: none
+				&:checked + label
+					+mod-shadow()
+
+		&__size
+			width: $btn-size-size
+			height: $btn-size-size
+			border: 1px solid $base-gray
+			text-align: center
+			border-radius: 50%
+			font-size: 11px
+			line-height: 34px
+			text-transform: uppercase
+			margin-right: ($btn-color-size - $btn-size-size) / 2 + $btn-color-space
+			margin-left: ($btn-color-size - $btn-size-size) / 2
+			display: inline-block
+			cursor: pointer
+			font-weight: 700
+			background-color: #fff
+			border-radius: 50%
+			outline: none
+			+transition()
+			&:hover
+				+mod-shadow()
+
+		&__color
+			display: inline-block
+			width: $btn-color-size
+			height: $btn-color-size
+			border-radius: 50%
+			margin-right: $btn-color-space
+			+transition()
+			cursor: pointer
+			outline: none
+			&:hover
+				+mod-shadow()
+
+
+.product-price
+	margin-bottom: 16px
+
+	&__item
+		display: inline-block
+		font-size: 24px
+		color: $titles
+		font-weight: bold
+		text-transform: uppercase
+		&-old-price
+			text-decoration: line-through
+			margin-right: 22px
+		&-current
+			color: $color-highlighting
+		&_small
+			font-size: 16px
+
+
+.crossSell
+	position: relative
+	&__title
+		font-size: 22px
+		color: $titles
+		font-weight: bold
+		line-height: 1.477
+		letter-spacing: 0.075em
+		text-transform: uppercase
+		margin: 0 0 12px
+	&__slider-viewport
+		overflow: hidden
+		font-size: 0
+	&__list
+		display: flex
+		justify-content: space-between
+		align-items: flex-start
+		flex-wrap: wrap
+		list-style-type: none
+		padding: 0
+
+	&__item
+		position: relative
+		margin-bottom: 10px
+		width: 265px
+		&-img
+			width: 265px
+			height: 265px
+			position: relative
+			+transition()
+	&__item:hover .crossSell__item-img
+		box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.5)
+
+	&__product-name
+		font-size: 14px
+		font-weight: bold
+		text-transform: uppercase
+		line-height: 1.06
+		text-align: center
+		letter-spacing: 0.07em;
+	&__price-item
+		display: inline-block
+		font-size: 16px
+		font-weight: 700
+		color: $titles
+		letter-spacing: 0.07em
+		&_old-price
+			text-decoration: line-through
+			margin-right: 17px
+		&_current
+			color: $color-highlighting
+	&__slider
+		position: relative
+		overflow: hidden
+	&__nav
+		color: #949494
+		font-size: 50px
+		top: 108px
+		position: absolute
+		cursor: pointer
+		z-index: 5
+		&_next
+			right: 0
+		&_left
+			left: 0
+
+		+transition()
+		&:hover
+			color: $base
+
+.rating
+	margin-bottom: 24px
+	&__stars
+		padding-left: 0
+		margin: 0
+		list-style-type: none
+		display: inline-block
+		&_overflow
+		  position: absolute
+		  left: 0px
+		  top: 0px
+		  width: 100%
+		  list-style: none
+		  padding: 0px
+		  margin: 0px
+		  overflow: hidden
+		  white-space: nowrap
+		&-wrapper
+			position: relative
+			display: inline-block
+			margin-right: 12px
+	&__item
+        color: $rating-color
+        font-size: 16px
+        display: inline-block
+        margin-right: 2px
+        &_rated
+          color: $rating-color-active
+        &:before
+          font-family: $font-icons
+          content: '\e805'
+
+.badge
+	background-color: $accent
+	position: absolute
+	bottom: 22px
+	right: 0
+	padding: 0 2px 0 4px
+	margin-bottom: 0
+	display: inline-block
+	&_two-prices
+		padding-left: 10px
+		padding-right: 10px
+.inline-block
+	display: inline-block
+
+@import "media"
+
+
